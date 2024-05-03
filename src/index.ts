@@ -1,5 +1,6 @@
 import Fastify from 'fastify';
 import routes from './route';
+import '../db/migrator';
 
 const fastify = Fastify({
   logger: true,
