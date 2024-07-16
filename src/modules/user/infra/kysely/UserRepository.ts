@@ -7,4 +7,4 @@ const UserRepository: IUserRepository = {
   },
 };
 
-export = { UserRepository };
+export { UserRepository };

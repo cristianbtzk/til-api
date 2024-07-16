@@ -1,4 +1,3 @@
-import { UUID } from 'crypto';
 import { ColumnType, Generated, Insertable, Selectable, Updateable } from 'kysely';
 
 export interface Database {
@@ -15,7 +14,7 @@ export interface TopicsTable {
 }
 
 export interface UsersTable {
-  id: UUID;
+  id: string;
   name: string;
   email: string;
   password: string;

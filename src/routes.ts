@@ -1,8 +1,9 @@
 import { FastifyInstance, FastifyPluginOptions } from 'fastify';
+import { userRoutes } from './modules/user/infra/controller/UserController';
 
 async function routes(fastify: FastifyInstance, options: FastifyPluginOptions) {
-  fastify.get('/', async (request, reply) => {
-    return { hi: 'me' };
+  fastify.register(userRoutes, {
+    prefix: '/users',
   });
 }
 

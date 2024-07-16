@@ -1,10 +1,20 @@
 import { FastifyInstance, FastifyPluginOptions } from 'fastify';
-import { IUserRepository } from '../../repositories/IUserRepository';
+import { parseCreateUserBody } from './schemas/createUser';
+import { createUserService } from '../../services/CreateUserService';
 
-async function routes(fastify: FastifyInstance, options: FastifyPluginOptions) {
+async function userRoutes(fastify: FastifyInstance, options: FastifyPluginOptions) {
   fastify.post('/', async (request, reply) => {
-    return { hi: 'me' };
+    const parsedBody = parseCreateUserBody(request.body);
+
+    if (!parsedBody.success) {
+      return reply.code(409).send({
+        error: true,
+      });
+    }
+
+    const user = await createUserService(parsedBody.data);
+    return user;
   });
 }
 
-export default routes;
+export { userRoutes };
