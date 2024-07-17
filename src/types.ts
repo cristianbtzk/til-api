@@ -8,6 +8,7 @@ export interface Database {
 export interface TopicsTable {
   id: Generated<BigInteger>;
 
+  user_id: string;
   title: string;
   completed: boolean;
   created_at: ColumnType<Date, string | undefined, never>;
